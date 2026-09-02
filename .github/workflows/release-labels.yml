@@ -25,14 +25,14 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/github-script@v9
         with:
           #language=javascript
           script: |
             const syncLabels = require('./.github/scripts/sync-labels');
             await syncLabels({ github, context });
-      - uses: release-drafter/release-drafter/autolabeler@c2e2804cc59f45f57076a99af580d0fedb697927 # v7
+      - uses: release-drafter/release-drafter/autolabeler@4d75298e00d9e34c483e5ff8c68d0ea1c1940c1e # v7
 
   verify_release_label:
     name: Verify release label
@@ -44,7 +44,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/github-script@v9
         env:
           RELEASE_LABELS: 'breaking, release:major, enhancement, release:minor, bug, release:patch, documentation, dependencies, security'
